@@ -91,6 +91,7 @@ app.task('load', function (cb) {
 
 
 app.task('content', ['load'], function () {
+  navigation.clearMenus();
   app.pages('src/content/**/*.{md,hbs}');
   return app.toStream('pages')
     .pipe(app.renderFile())
