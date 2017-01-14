@@ -1,0 +1,30 @@
+<div class="title-bar" data-responsive-toggle="page-top-bar" data-hide-for="medium">
+  <button class="menu-icon" type="button" data-toggle></button>
+  <div class="title-bar-title" data-toggle>O'Donnell Family Cookbook</div>
+</div>
+<div class="top-bar" id="page-top-bar">
+  <div class="row">
+    <div class="top-bar-left">
+      <ul class="drilldown menu" data-responsive-menu="drilldown medium-dropdown">
+        <li class="menu-text"><a href="/">Home</a></li>
+        {{#each navigation.main.items }}
+          {{#compare linkId "!=" 'index'}}
+            {{#if items.length}}
+              <li class="has-dropdown{{#if isCurrentPage}} current-page{{/if}}" data-linkid="{{linkId}}">
+                <a href="{{{url}}}" >{{{title}}}</a>
+                <ul class="menu vertical">
+                  <li class="{{#if isCurrentPage}}current-page{{/if}}"  data-linkid="{{linkId}}"><a href="{{{url}}}" >{{{title}}}</a></li>
+                  {{#each this.items}}
+                    <li class="{{#if isCurrentPage}}current-page{{/if}}"  data-linkid="{{linkId}}"><a href="{{{url}}}" >{{{title}}}</a></li>
+                  {{/each}}
+                </ul>
+              </li>
+            {{else}}
+              <li class="no-dropdown {{#if isCurrentPage}}current-page{{/if}}"  data-linkid="{{linkId}}"><a href="{{{url}}}" >{{{title}}}</a></li>
+            {{/if}}
+          {{/compare}}
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+</div>
